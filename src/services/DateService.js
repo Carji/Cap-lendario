@@ -17,9 +17,9 @@ export class DateService {
         return calendar;
     } 
 
-    static addMonth(date, diff) {
+    static getNextOrPreviousMonth(date, diff) {
         date.setMonth(date.getMonth() + diff);
-        return date;
+        return DateService.getDaysOfMonth(date);
     }
     
 }
