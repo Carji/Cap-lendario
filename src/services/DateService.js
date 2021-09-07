@@ -15,7 +15,7 @@ export class DateService {
             fecha.setDate(fecha.getDate() + 1);
         }
         return calendar;
-    } 
+    }
 
     static getNextOrPreviousMonth(date, diff) {
         date.setMonth(date.getMonth() + diff);

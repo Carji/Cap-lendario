@@ -3,27 +3,27 @@ export class PubSub {
     this._subscriptor = new Map()
   }
 
-  emit(chanel, data) {
-    const chanelSubscriptors = this._subscriptor.get(chanel);
-    if (chanelSubscriptors) {
-      chanelSubscriptors.forEach(s => {
+  emit(channel, data) {
+    const channelSubscriptors = this._subscriptor.get(channel);
+    if (channelSubscriptors) {
+      channelSubscriptors.forEach(s => {
         s(data)
       });
     }
   }
   on(channel, handler) {
-    let chanelSubscriptors = this._subscriptor.get(channel);
-    if (!chanelSubscriptors) {
-      chanelSubscriptors = [handler]
-      this._subscriptor.set(channel, chanelSubscriptors);
+    let channelSubscriptors = this._subscriptor.get(channel);
+    if (!channelSubscriptors) {
+      channelSubscriptors = [handler]
+      this._subscriptor.set(channel, channelSubscriptors);
     } else {
-      chanelSubscriptors.push(handler);
+      channelSubscriptors.push(handler);
     }
     return () => {
-      const index = chanelSubscriptors.indexOf(handler);
+      const index = channelSubscriptors.indexOf(handler);
       if (index > -1) {
-        chanelSubscriptors.splice(index, 1);
-        if (chanelSubscriptors.length === 0) {
+        channelSubscriptors.splice(index, 1);
+        if (channelSubscriptors.length === 0) {
           this._subscriptor.delete(channel);
         }
       }

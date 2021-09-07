@@ -1,7 +1,7 @@
-import { FormatService } from "../services/FormatService.js"
-import { DateService } from "../services/DateService.js"
-import pubSub from "../services/PubSub.js"
-import { CHANELS } from "../services/Config.js"
+import { FormatService } from "../services/formatService.js"
+import { DateService } from "../services/dateService.js"
+import pubSub from "../services/pubSub.js"
+import { CHANNELS } from "../services/config.js"
 
 class SystemDate extends HTMLElement {
 
@@ -20,8 +20,8 @@ class SystemDate extends HTMLElement {
         const text = document.createTextNode(this._formatDate());
         div.appendChild(text);
         shadow.appendChild(div);
-        this._dispose = pubSub.on(CHANELS.CHANGEDATE, (date) => {
-            if(!DateService.isToday(date,new Date())){
+        this._dispose = pubSub.on(CHANNELS.CHANGEDATE, (date) => {
+            if (!DateService.isToday(date, new Date())) {
                 this.date = date;
                 text.data = this._formatDate();
             }
