@@ -16,5 +16,5 @@ class TimerService{
         this._timerInterface.clearInterval(this._intervalID);
     }
 }
-//TODO: VA A HABER PROBLEMAS
+//TODO: VA A HABER PROBLEMAS    
 export default new TimerService(new PubSub(), timerInterface)

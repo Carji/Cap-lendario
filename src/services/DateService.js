@@ -4,7 +4,7 @@ function getFirstDayCalendar(fecha) {
 }
 
 export class DateService {
-    
+
     static getDaysOfMonth(date) {
         debugger;
         let calendar = [];
@@ -15,11 +15,16 @@ export class DateService {
             fecha.setDate(fecha.getDate() + 1);
         }
         return calendar;
-    } 
+    }
 
     static getNextOrPreviousMonth(date, diff) {
         date.setMonth(date.getMonth() + diff);
         return DateService.getDaysOfMonth(date);
     }
-    
+    static isToday(date, newdate) {
+        return (date.getDate() === newDate.getDate()
+            && date.getMonth() === newDate.getMonth()
+            && date.getFullYear() === newDate.getFullYear())
+    }
+
 }
