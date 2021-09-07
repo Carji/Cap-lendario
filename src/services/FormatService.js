@@ -1,14 +1,16 @@
+import { DateService } from './DateService.js'
+
 export class FormatService {
     static getTime(date) {
-        return '9:39:30'
+        return new Intl.DateTimeFormat('es-ES', { timeStyle: 'medium' }).format(date);
     }
     static getSystemDate(date) {
-        return 'lunes, 6 de Septiembre de 2021'
+        return new Intl.DateTimeFormat('es-ES', { dateStyle: 'full' }).format(date);
     }
     static getMonthDate(date) {
-        return 'Septiembre de 2021'
+        return new Intl.DateTimeFormat('es-ES',  {  month: 'long',year: 'numeric' }).format(date);
     }
     static getSelectedDate(date) {
-        return 'hoy'
+        return DateService.isToday(date, new Date()) ? ' Today ' : new Intl.DateTimeFormat('es-ES',{ weekday: 'long', day: 'numeric' }).format(date);
     }
 }
