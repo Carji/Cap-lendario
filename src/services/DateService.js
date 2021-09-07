@@ -27,4 +27,9 @@ export class DateService {
             && date.getFullYear() === newDate.getFullYear())
     }
 
+    static isThisMonth(date, newDate) {
+        return date.getMonth() === newDate.getMonth() &&
+        date.getFullYear() === newDate.getFullYear();
+    }
+
 }
