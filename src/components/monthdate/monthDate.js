@@ -1,7 +1,6 @@
-import { TimerService } from "../services/TimerService.js"
-import { getMonthDate } from "../services/FormatService.js"
-import { FormatService } from "../services/FormatService.js";
-import { CHANNELS } from "../services/config.js"
+import { FormatService } from "../../services/formatService.js"
+import pubSub from "../../services/pubSub.js"
+import { CHANNELS } from "../../services/config.js"
 
 class MonthDate extends HTMLElement {
 
