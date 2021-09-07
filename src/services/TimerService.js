@@ -1,4 +1,4 @@
-import { PubSub } from "./PubSub.js"
+import pubSub from "./PubSub.js"
 import { INTERVAL, CHANELS } from "./Config.js"
 import { timerInterface } from "./TimerInterface.js"
 
@@ -16,5 +16,5 @@ class TimerService{
         this._timerInterface.clearInterval(this._intervalID);
     }
 }
-//TODO: VA A HABER PROBLEMAS    
-export default new TimerService(new PubSub(), timerInterface)
+
+export default new TimerService(pubSub, timerInterface)
