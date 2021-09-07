@@ -21,5 +21,11 @@ export class DateService {
         date.setMonth(date.getMonth() + diff);
         return date;
     }
-    
+
+    static isToday(date, newDate) {
+        return (date.getDate() === newDate.getDate()
+            && date.getMonth() === newDate.getMonth()
+            && date.getFullYear() === newDate.getFullYear());
+    }
+
 }
