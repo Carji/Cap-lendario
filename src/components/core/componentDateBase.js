@@ -9,6 +9,7 @@ export class ComponentDateBase extends HTMLElement {
         this.date = new Date();
         this._oldDate = new Date(); 
         this._disposables=[];
+        
     }
 
         
@@ -34,6 +35,10 @@ export class ComponentDateBase extends HTMLElement {
         this._disposables=[];        
     }
 
+    _getStyle() {
+        return document.createElement('style');
+    }
+
     _suscribe(channel=CHANNELS.CHANGEDATE) {
         const dispose = pubSub.on(channel, (date) => {
             this.date=date;
@@ -55,7 +60,11 @@ export class ComponentDateBase extends HTMLElement {
 
     _create() {
         this._text = document.createTextNode("");
-        this._shadow = this.attachShadow({ mode: "open" })
+        this._shadow = this.attachShadow({ mode: "open" });
+        const style = this._getStyle();
+        if (style) {
+            this._shadow.appendChild(style);
+        }
         this._shadow.appendChild(this._text);
     }
 

@@ -1,6 +1,7 @@
 import { FormatService } from "../../services/formatService.js"
 import { DateService } from "../../services/dateService.js"
 import { ComponentDateBase } from "../core/componentDateBase.js"
+import css from "./systemDate.css.js"
 
 
 class SystemDate extends ComponentDateBase {
@@ -12,6 +13,10 @@ class SystemDate extends ComponentDateBase {
 
     _formatDate() {
         return FormatService.getSystemDate(this.date);
+    }
+
+    _getStyle() {
+        this._shadow.adoptedStyleSheets = [css];
     }
     
 }
