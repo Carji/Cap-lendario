@@ -1,26 +1,32 @@
 import { DAYSOFWEEK } from "../../services/config.js"
+import { ComponentDateBase } from "../core/componentDateBase.js";
 
-class DayCalendar extends HTMLElement {
+class DayCalendar extends ComponentDateBase {
 
-    constructor() {
-        super();
-        this.date = new Date();
+    // TODO: Esto realmente deberia estar en blanco ¿?
+    _formatDate() {
+        return false;
     }
 
-    connectedCallback() {
-        const shadow = this.attachShadow({ mode: "open" })
-        const div = document.createElement("div");
+    _changeDate(value) {
+        return false;
+    }
+
+    _create() {
+        const style = this._getStyle();
+        this._shadow = this.attachShadow({ mode: "open" });
+        let container = document.createElement("days-container");
+        this._shadow.appendChild(container);
         DAYSOFWEEK.forEach(e => {
-            let day = document.createElement("p");
+            let day = document.createElement("day");
             day.innerHTML = e;
-            div.appendChild(day);
+            container.appendChild(day);
         })
-        shadow.appendChild(div);
+        if (style) {
+            this._shadow.appendChild(style);
+        }
     }
 
-    disconnectedCallback() {
-        this._dispose && this._dispose();
-    }
 }
 
 window.customElements.define("cap-day-calendar", DayCalendar);
