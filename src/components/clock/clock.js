@@ -3,7 +3,18 @@ import { ComponentDateBase } from "../core/componentDateBase.js"
 
 class Clock extends ComponentDateBase {
 
-  
+    _getStyle() {
+        const style = super._getStyle();
+        style.textContent = `
+            :host {
+                font-size: 3rem;
+                background-color: var(--background-color);
+                color: var(--color);
+                }
+        `;
+        return style;
+    }
+
     _formatDate() {
         return FormatService.getTime(this.date);
     }
@@ -11,22 +22,6 @@ class Clock extends ComponentDateBase {
     _changeDate(value) {
         return true;
     }
-
-    _getStyle() {
-        const style = super._getStyle();
-        style.textContent=`
-            :host {
-                font-size: 3rem;
-                display: block;
-                background-color: var(--background-color);
-                color: var(--color);
-                }
-        
-        `;
-        return style;
-    }
-    
-    
 
 }
 

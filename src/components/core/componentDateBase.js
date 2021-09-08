@@ -1,49 +1,48 @@
 import pubSub from "../../services/pubSub.js"
 import { CHANNELS } from "../../services/config.js"
 const METHOD_NOT_IMPLEMENTED = "Method not implemented"
+
 export class ComponentDateBase extends HTMLElement {
 
     constructor() {
         super();
         this._create();
         this.date = new Date();
-        this._oldDate = new Date(); 
-        this._disposables=[];
-        
+        this._oldDate = new Date();
+        this._disposables = [];
+
     }
 
-        
-    set date(value){
-        this._oldDate=this.date;
+    set date(value) {
+        this._oldDate = this.date;
         if (this._changeDate(value)) {
-            this._date=value;
+            this._date = value;
             this._update();
         }
     }
-    
+
     get date() {
         return this._date;
     }
 
-    
     connectedCallback() {
         this._suscribe();
     }
 
     disconnectedCallback() {
         this._disposables.forEach(dispose => dispose && dispose());
-        this._disposables=[];        
+        this._disposables = [];
     }
 
     _getStyle() {
         return document.createElement('style');
     }
 
-    _suscribe(channel=CHANNELS.CHANGEDATE) {
+    _suscribe(channel = CHANNELS.CHANGEDATE) {
         const dispose = pubSub.on(channel, (date) => {
-            this.date=date;
-         });
-         this._disposables.push(dispose);
+            this.date = date;
+        });
+        this._disposables.push(dispose);
     }
 
     _changeDate(value) {
@@ -53,7 +52,7 @@ export class ComponentDateBase extends HTMLElement {
     _formatDate() {
         throw METHOD_NOT_IMPLEMENTED;
     }
-    
+
     _update() {
         this._text.data = this._formatDate();
     }

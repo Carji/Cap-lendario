@@ -8,31 +8,35 @@
     <title>Calendar</title>
     <style>
         :root {
-            --color:white;
-            --background-color:black;
-            --system-date-color:blue;
-            --month-date-color:gray;
+            --color: #DFDFDF;
+            --background-color: #262626;
+            --system-date-color: #9DC8F0;
+            --system-date-hover-color: #454545;
         }
-        .clock__big{
+
+        .clock__big {
             font-size: 5rem;
         }
-        .clock__small{
+
+        .clock__small {
             font-size: 0.5rem;
+        }
+
+        .grid-container {
+            display: inline-grid;
+            background-color: var(--background-color);
         }
     </style>
 </head>
 
 <body>
-    <cap-clock></cap-clock>
-    <cap-clock></cap-clock>
-    <cap-clock class="clock__big"></cap-clock>
-    <cap-clock class="clock__small"></cap-clock>
-    <cap-system-date></cap-system-date>
-    <cap-system-date></cap-system-date>
-    <cap-month-date></cap-month-date>
-    <cap-month-date></cap-month-date>
-    <cap-event-date></cap-event-date>
-    <cap-day-calendar></cap-day-calendar>
+    <div class="grid-container">
+        <cap-clock></cap-clock>
+        <cap-system-date></cap-system-date>
+        <cap-month-date></cap-month-date>
+        <cap-day-calendar></cap-day-calendar>
+        <cap-event-date></cap-event-date>
+    </div>
     <script type="module" src="src/index.js"></script>
 
 </body>

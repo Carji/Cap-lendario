@@ -5,6 +5,10 @@ import css from "./monthDate.css" assert { type: "css" };
 
 class MonthDate extends ComponentDateBase {
 
+    _getStyle() {
+        this._shadow.adoptedStyleSheets = [css];
+    }
+    
     _formatDate() {
         return FormatService.getMonthDate(this.date);
     }
@@ -13,9 +17,6 @@ class MonthDate extends ComponentDateBase {
         return !this.date || !DateService.isThisMonth(value, this._oldDate);
     }
 
-    _getStyle() {
-        this._shadow.adoptedStyleSheets = [css];
-    }
 }
 
 window.customElements.define("cap-month-date", MonthDate);

@@ -8,6 +8,16 @@ class EventDate extends ComponentDateBase {
         this._suscribe(CHANNELS.CHANGESELECTEDATE);
     }
 
+    _getStyle() {
+        const style = super._getStyle();
+        style.textContent = `
+            :host {
+                color: var(--color);
+                }
+        `;
+        return style;
+    }
+
     _changeDate() {
         return true;
     }
@@ -15,7 +25,6 @@ class EventDate extends ComponentDateBase {
     _formatDate() {
         return FormatService.getSelectedDate(this.date);
     }
-
 
 }
 

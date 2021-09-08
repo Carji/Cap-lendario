@@ -3,21 +3,12 @@ import { ComponentDateBase } from "../core/componentDateBase.js";
 
 class DayCalendar extends ComponentDateBase {
 
-    // TODO: Esto realmente deberia estar en blanco ¿?
-    _formatDate() {
-        return false;
-    }
-
-    _changeDate(value) {
-        return false;
-    }
-
     _getStyle() {
         const style = super._getStyle();
         style.textContent = `
             :host {
                 background-color: var(--background-color);
-                color: black;
+                color: var(--color);
                 }
             
             days-container {
@@ -31,6 +22,14 @@ class DayCalendar extends ComponentDateBase {
                 }
         `;
         return style;
+    }
+
+    _formatDate() {
+        return false;
+    }
+
+    _changeDate(value) {
+        return false;
     }
 
     _create() {
