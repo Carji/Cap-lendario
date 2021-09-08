@@ -17,7 +17,6 @@ class DayCalendar extends ComponentDateBase {
                 }
 
             day {
-                display: inline;
                 text-align: center;
                 }
         `;
