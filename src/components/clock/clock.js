@@ -14,7 +14,15 @@ class Clock extends ComponentDateBase {
 
     _getStyle() {
         const style = super._getStyle();
-        style.textContent=`:host {font-size: 3rem;}`;
+        style.textContent=`
+            :host {
+                font-size: 3rem;
+                display: block;
+                background-color: var(--background-color);
+                color: var(--color);
+                }
+        
+        `;
         return style;
     }
     
