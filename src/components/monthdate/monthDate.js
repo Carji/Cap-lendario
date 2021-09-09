@@ -6,6 +6,24 @@ import css from "./monthDate.css.js"
 
 class MonthDate extends ComponentDateBase {
 
+    constructor() {
+        super();
+        this._pubSubInstance = null;
+
+    }
+    connectedCallback() {
+        super.connectedCallback();
+        const event = new CustomEvent("getpubsub", {
+            detail: this,
+            bubbles: true,
+            composed: true,
+            cancelable:true,
+        });
+        this.dispatchEvent(event);
+    }
+    set pubSubInstance(value) {
+        this._pubSubInstance = value;
+    }
     _formatDate() {
         return FormatService.getMonthDate(this.date);
     }

@@ -13,26 +13,20 @@
             --system-date-color:blue;
             --month-date-color:gray;
         }
-        .clock__big{
-            font-size: 5rem;
-        }
-        .clock__small{
-            font-size: 0.5rem;
+        body {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr) );
+          gap: 8px;  
         }
     </style>
 </head>
 
 <body>
-    <cap-clock></cap-clock>
-    <cap-clock></cap-clock>
-    <cap-clock class="clock__big"></cap-clock>
-    <cap-clock class="clock__small"></cap-clock>
-    <cap-system-date></cap-system-date>
-    <cap-system-date></cap-system-date>
-    <cap-month-date></cap-month-date>
-    <cap-month-date></cap-month-date>
-    <cap-event-date></cap-event-date>
-    <cap-day-calendar></cap-day-calendar>
+    <cap-calendar></cap-calendar>
+    <cap-calendar></cap-calendar>
+    <cap-calendar></cap-calendar>
+    <cap-calendar></cap-calendar>
+    <cap-calendar></cap-calendar>
     <script type="module" src="src/index.js"></script>
 
 </body>

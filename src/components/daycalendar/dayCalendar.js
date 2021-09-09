@@ -1,33 +1,17 @@
 import { DAYSOFWEEK } from "../../services/config.js"
-import { ComponentDateBase } from "../core/componentDateBase.js";
 
-class DayCalendar extends ComponentDateBase {
+class DayCalendar extends HTMLElement {
 
-    // TODO: Esto realmente deberia estar en blanco ¿?
-    _formatDate() {
-        return false;
+    constructor(){
+        super();
+        this._create();
     }
-
-    _changeDate(value) {
-        return false;
-    }
-
     _getStyle() {
-        const style = super._getStyle();
+        const style = document.createElement("style");
         style.textContent = `
             :host {
-                background-color: var(--background-color);
-                color: black;
-                }
-            
-            days-container {
                 display: grid;
                 grid-template-columns: repeat(7, auto);
-                }
-
-            day {
-                display: inline;
-                text-align: center;
                 }
         `;
         return style;
@@ -35,17 +19,16 @@ class DayCalendar extends ComponentDateBase {
 
     _create() {
         const style = this._getStyle();
-        this._shadow = this.attachShadow({ mode: "open" });
-        let container = document.createElement("days-container");
-        this._shadow.appendChild(container);
-        DAYSOFWEEK.forEach(e => {
-            let day = document.createElement("day");
-            day.innerHTML = e;
-            container.appendChild(day);
+        const shadow = this.attachShadow({ mode: "open" });
+        shadow.appendChild(style);
+        DAYSOFWEEK.forEach(day => {
+            const div = document.createElement("div");
+            const text = document.createTextNode(day);
+            div.appendChild(text);
+            shadow.appendChild(div);
         })
-        if (style) {
-            this._shadow.appendChild(style);
-        }
+            
+
     }
 
 }

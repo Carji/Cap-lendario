@@ -1,6 +1,2 @@
 import './services/timerService.js'
-import './components/clock/clock.js'
-import './components/monthdate/monthDate.js'
-import './components/daycalendar/dayCalendar.js'
-import './components/systemdate/systemDate.js'
-import './components/eventdate/eventdate.js'
+import './components/calendar/calendar.js'

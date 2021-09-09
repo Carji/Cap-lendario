@@ -1,7 +1,7 @@
 import { FormatService } from "../../services/formatService.js"
 import { ComponentDateBase } from "../core/componentDateBase.js"
 
-class Clock extends ComponentDateBase {
+export class Clock extends ComponentDateBase {
 
   
     _formatDate() {
@@ -26,8 +26,10 @@ class Clock extends ComponentDateBase {
         return style;
     }
     
-    
+    static getComponentName(){
+        return "cap-clock";
+    }
 
 }
 
-window.customElements.define("cap-clock", Clock);
+window.customElements.define(Clock.getComponentName(), Clock);
