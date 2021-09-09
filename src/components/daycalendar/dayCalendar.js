@@ -11,12 +11,12 @@ class DayCalendar extends ComponentDateBase {
                 color: var(--color);
                 }
             
-            days-container {
+            week-container {
                 display: grid;
                 grid-template-columns: repeat(7, auto);
                 }
 
-            day {
+            day-week {
                 text-align: center;
                 }
         `;
@@ -34,10 +34,10 @@ class DayCalendar extends ComponentDateBase {
     _create() {
         const style = this._getStyle();
         this._shadow = this.attachShadow({ mode: "open" });
-        let container = document.createElement("days-container");
+        let container = document.createElement("week-container");
         this._shadow.appendChild(container);
         DAYSOFWEEK.forEach(e => {
-            let day = document.createElement("day");
+            let day = document.createElement("day-week");
             day.innerHTML = e;
             container.appendChild(day);
         })
