@@ -5,3 +5,8 @@ export const CHANNELS = {
     CHANGEMONTH: 1,
     CHANGESELECTEDATE: 2,
 }
+
+export const PUB_SUB_INSTANCE = {
+    GLOBAL: "getpubsubglobal",
+    INSTANCE: "getpubsub",
+}

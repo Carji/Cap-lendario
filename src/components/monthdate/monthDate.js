@@ -2,6 +2,7 @@ import { FormatService } from "../../services/formatService.js"
 import { ComponentDateBase } from "../core/componentDateBase.js"
 import { DateService } from "../../services/dateService.js"
 //import css from "./monthDate.css" assert { type: "css" };
+import {PUB_SUB_INSTANCE} from '../../services/config.js'
 import css from "./monthDate.css.js"
 
 class MonthDate extends ComponentDateBase {
@@ -13,7 +14,7 @@ class MonthDate extends ComponentDateBase {
     }
     connectedCallback() {
         super.connectedCallback();
-        const event = new CustomEvent("getpubsub", {
+        const event = new CustomEvent(PUB_SUB_INSTANCE.INSTANCE, {
             detail: this,
             bubbles: true,
             composed: true,

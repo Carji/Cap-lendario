@@ -3,6 +3,7 @@ import '../monthdate/monthDate.js'
 import '../daycalendar/dayCalendar.js'
 import '../systemdate/systemDate.js'
 import { PubSub } from '../../services/pubSub.js'
+import {PUB_SUB_INSTANCE} from '../../services/config.js'
 import css from './calendar.css' assert { type: 'css' };
 
 
@@ -31,7 +32,8 @@ class Calendar extends HTMLElement {
     }
 
     disconnectedCallback() {
-        this.removeEventListener("getpubsub", this._handlerPubSub);
+        this.removeEventListener(PUB_SUB_INSTANCE.INSTANCE, this._handlerPubSub);
+        this._pubSub.dispose();
     }
     _setStyle(shadow) {
         shadow.adoptedStyleSheets = [css];
