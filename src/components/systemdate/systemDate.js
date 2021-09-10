@@ -4,7 +4,7 @@ import { ComponentDateBase } from "../core/componentDateBase.js"
 import css from "./systemDate.css.js"
 
 
-class SystemDate extends ComponentDateBase {
+export class SystemDate extends ComponentDateBase {
 
     
     _changeDate(value) {
@@ -18,7 +18,9 @@ class SystemDate extends ComponentDateBase {
     _getStyle() {
         this._shadow.adoptedStyleSheets = [css];
     }
-    
+    static getComponentName() {
+        return "cap-system-date";
+    }
 }
 
-window.customElements.define("cap-system-date", SystemDate);
+window.customElements.define(SystemDate.getComponentName(), SystemDate);

@@ -1,6 +1,6 @@
 import { DAYSOFWEEK } from "../../services/config.js"
 
-class DayCalendar extends HTMLElement {
+export class DayCalendar extends HTMLElement {
 
     constructor(){
         super();
@@ -27,10 +27,11 @@ class DayCalendar extends HTMLElement {
             div.appendChild(text);
             shadow.appendChild(div);
         })
-            
-
     }
 
+    static getComponentName() {
+        return "cap-day-calendar";
+    }
 }
 
-window.customElements.define("cap-day-calendar", DayCalendar);
+window.customElements.define(DayCalendar.getComponentName(), DayCalendar);

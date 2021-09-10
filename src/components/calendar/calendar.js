@@ -1,9 +1,10 @@
 import { Clock } from '../clock/clock.js'
 import { MonthDate } from '../monthdate/monthDate.js'
-import '../daycalendar/dayCalendar.js'
-import '../systemdate/systemDate.js'
+import { DayCalendar } from '../daycalendar/dayCalendar.js'
+import { SystemDate } from '../systemdate/systemDate.js'
+import { EventDate } from '../eventdate/eventdate.js'
 import { PubSub } from '../../services/pubSub.js'
-import {PUB_SUB_INSTANCE} from '../../services/config.js'
+import { PUB_SUB_INSTANCE } from '../../services/config.js'
 import css from './calendar.css' assert { type: 'css' };
 
 
@@ -18,9 +19,10 @@ class Calendar extends HTMLElement {
         const shadow = this.attachShadow({ mode: "open" });
         const components = [
             Clock.getComponentName(),
-            "cap-system-date",
+            SystemDate.getComponentName(),
             MonthDate.getComponentName(),
-            "cap-day-calendar"];
+            DayCalendar.getComponentName(),
+            EventDate.getComponentName()];
         components.forEach(component => {
             shadow.appendChild(document.createElement(component));
         })
