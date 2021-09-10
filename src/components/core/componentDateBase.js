@@ -24,10 +24,6 @@ export class ComponentDateBase extends HTMLElement {
         return this._date;
     }
 
-    
-    connectedCallback() {
-        this._suscribe();
-    }
 
     disconnectedCallback() {
         this._disposables.forEach(dispose => dispose && dispose());
@@ -38,13 +34,12 @@ export class ComponentDateBase extends HTMLElement {
         return document.createElement('style');
     }
 
-    _suscribe(channel=CHANNELS.CHANGEDATE) {
-        // TODO: 
-        
-        // const dispose = pubSub.on(channel, (date) => {
-        //     this.date=date;
-        //  });
-        //  this._disposables.push(dispose);
+    _suscribe(pubSub, channel=CHANNELS.CHANGEDATE) {
+
+        const dispose = pubSub.on(channel, (date) => {
+            this.date=date;
+         });
+         this._disposables.push(dispose);
     }
 
     _changeDate(value) {

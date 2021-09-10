@@ -13,7 +13,7 @@ class MonthDate extends ComponentDateBase {
 
     }
     connectedCallback() {
-        super.connectedCallback();
+    //    super.connectedCallback();
         const event = new CustomEvent(PUB_SUB_INSTANCE.INSTANCE, {
             detail: this,
             bubbles: true,

@@ -1,5 +1,6 @@
 import { FormatService } from "../../services/formatService.js"
 import { ComponentDateBase } from "../core/componentDateBase.js"
+import {PUB_SUB_INSTANCE} from '../../services/config.js'
 
 export class Clock extends ComponentDateBase {
 
@@ -24,6 +25,19 @@ export class Clock extends ComponentDateBase {
         
         `;
         return style;
+    }
+    connectedCallback() {
+        const event = new CustomEvent(PUB_SUB_INSTANCE.GLOBAL, {
+            detail: this,
+            bubbles: true,
+            composed: true,
+            cancelable:true,
+        });
+        this.dispatchEvent(event);
+    }
+    set pubSubInstance(value) {
+        this._pubSubInstance = value;
+        this._suscribe(value);
     }
     
     static getComponentName(){
