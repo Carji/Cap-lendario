@@ -1,9 +1,10 @@
 import { FormatService } from "../../services/formatService.js"
 import { ComponentDateBase } from "../core/componentDateBase.js"
+import { MixinGlobal, Mixin } from "../core/mixin.js"
 
-export class Clock extends ComponentDateBase {
+export class Clock extends Mixin(ComponentDateBase, MixinGlobal) {
 
-  
+
     _formatDate() {
         return FormatService.getTime(this.date);
     }
@@ -14,19 +15,18 @@ export class Clock extends ComponentDateBase {
 
     _getStyle() {
         const style = super._getStyle();
-        style.textContent=`
+        style.textContent = `
             :host {
                 font-size: 3rem;
                 display: block;
                 background-color: var(--background-color);
                 color: var(--color);
                 }
-        
         `;
         return style;
     }
-    
-    static getComponentName(){
+
+    static getComponentName() {
         return "cap-clock";
     }
 
