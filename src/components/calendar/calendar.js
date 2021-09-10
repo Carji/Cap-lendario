@@ -1,5 +1,5 @@
 import { Clock } from '../clock/clock.js'
-import '../monthdate/monthDate.js'
+import { MonthDate } from '../monthdate/monthDate.js'
 import '../daycalendar/dayCalendar.js'
 import '../systemdate/systemDate.js'
 import { PubSub } from '../../services/pubSub.js'
@@ -19,7 +19,7 @@ class Calendar extends HTMLElement {
         const components = [
             Clock.getComponentName(),
             "cap-system-date",
-            "cap-month-date",
+            MonthDate.getComponentName(),
             "cap-day-calendar"];
         components.forEach(component => {
             shadow.appendChild(document.createElement(component));

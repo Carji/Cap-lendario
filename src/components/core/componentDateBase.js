@@ -4,10 +4,10 @@ export class ComponentDateBase extends HTMLElement {
 
     constructor() {
         super();
-        this._create();
         this.date = new Date();
         this._oldDate = new Date(); 
         this._disposables=[];
+        this._create();
         
     }
 
@@ -16,7 +16,7 @@ export class ComponentDateBase extends HTMLElement {
         this._oldDate=this.date;
         if (this._changeDate(value)) {
             this._date=value;
-            this._update();
+         this._text &&   (this._update());
         }
     }
     
@@ -67,6 +67,7 @@ export class ComponentDateBase extends HTMLElement {
             this._shadow.appendChild(style);
         }
         this._shadow.appendChild(this._text);
+        this._update();
     }
 
 }
