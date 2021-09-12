@@ -1,9 +1,9 @@
 import { FormatService } from "../../services/formatService.js"
 import { ComponentDateBase } from "../core/componentDateBase.js"
+import { PUB_SUB_INSTANCE } from '../../services/config.js'
 import { MixinGlobal, Mixin } from "../core/mixin.js"
 
 export class Clock extends Mixin(ComponentDateBase, MixinGlobal) {
-
 
     _formatDate() {
         return FormatService.getTime(this.date);
@@ -19,11 +19,23 @@ export class Clock extends Mixin(ComponentDateBase, MixinGlobal) {
             :host {
                 font-size: 3rem;
                 display: block;
-                background-color: var(--background-color);
-                color: var(--color);
                 }
         `;
         return style;
+    }
+
+    connectedCallback() {
+        const event = new CustomEvent(PUB_SUB_INSTANCE.GLOBAL, {
+            detail: this,
+            bubbles: true,
+            composed: true,
+            cancelable: true,
+        });
+        this.dispatchEvent(event);
+    }
+    set pubSubInstance(value) {
+        this._pubSubInstance = value;
+        this._suscribe(value);
     }
 
     static getComponentName() {

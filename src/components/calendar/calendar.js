@@ -1,6 +1,6 @@
 import { Clock } from '../clock/clock.js'
 import { MonthDate } from '../monthdate/monthDate.js'
-import { DayCalendar } from '../daycalendar/dayCalendar.js'
+import { DayOfWeek } from '../dayofweek/dayofweek.js'
 import { SystemDate } from '../systemdate/systemDate.js'
 import { EventDate } from '../eventdate/eventdate.js'
 import { PubSub } from '../../services/pubSub.js'
@@ -21,7 +21,7 @@ class Calendar extends HTMLElement {
             Clock.getComponentName(),
             SystemDate.getComponentName(),
             MonthDate.getComponentName(),
-            DayCalendar.getComponentName(),
+            DayOfWeek.getComponentName(),
             EventDate.getComponentName()];
         components.forEach(component => {
             shadow.appendChild(document.createElement(component));

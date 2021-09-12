@@ -3,10 +3,10 @@ import { ComponentDateBase } from "../core/componentDateBase.js"
 import { DateService } from "../../services/dateService.js"
 //import css from "./monthDate.css" assert { type: "css" };
 import { MixinGlobal, Mixin } from "../core/mixin.js"
-import {PUB_SUB_INSTANCE} from '../../services/config.js'
+import { PUB_SUB_INSTANCE } from '../../services/config.js'
 import css from "./monthDate.css.js"
 
-export class MonthDate extends Mixin(ComponentDateBase, MixinGlobal){
+export class MonthDate extends Mixin(ComponentDateBase, MixinGlobal) {
 
     constructor() {
         super();
@@ -14,15 +14,15 @@ export class MonthDate extends Mixin(ComponentDateBase, MixinGlobal){
 
     }
     connectedCallback() {
-        super.connectedCallback();
         const event = new CustomEvent(PUB_SUB_INSTANCE.INSTANCE, {
             detail: this,
             bubbles: true,
             composed: true,
-            cancelable:true,
+            cancelable: true,
         });
         this.dispatchEvent(event);
     }
+
     set pubSubInstance(value) {
         this._pubSubInstance = value;
     }

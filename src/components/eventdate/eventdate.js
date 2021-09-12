@@ -5,7 +5,7 @@ import { CHANNELS } from "../../services/config.js"
 export class EventDate extends ComponentDateBase {
 
     connectedCallback() {
-        this._suscribe(CHANNELS.CHANGESELECTEDATE);
+       
     }
 
     _changeDate() {
