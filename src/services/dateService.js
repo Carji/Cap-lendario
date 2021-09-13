@@ -6,7 +6,6 @@ function getFirstDayCalendar(date) {
 export class DateService {
 
     static getDaysOfMonth(date) {
-        debugger;
         let calendar = [];
         getFirstDayCalendar(date);
         let i = 1;

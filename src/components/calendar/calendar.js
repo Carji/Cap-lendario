@@ -1,7 +1,8 @@
 import { Clock } from '../clock/clock.js'
+import { SystemDate } from '../systemdate/systemDate.js'
 import { MonthDate } from '../monthdate/monthDate.js'
 import { DayOfWeek } from '../dayofweek/dayofweek.js'
-import { SystemDate } from '../systemdate/systemDate.js'
+import { GridCalendar } from '../gridcalendar/gridCalendar.js'
 import { EventDate } from '../eventdate/eventdate.js'
 import { PubSub } from '../../services/pubSub.js'
 import { PUB_SUB_INSTANCE } from '../../services/config.js'
@@ -22,6 +23,7 @@ class Calendar extends HTMLElement {
             SystemDate.getComponentName(),
             MonthDate.getComponentName(),
             DayOfWeek.getComponentName(),
+            GridCalendar.getComponentName(),
             EventDate.getComponentName()];
         components.forEach(component => {
             shadow.appendChild(document.createElement(component));
