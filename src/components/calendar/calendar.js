@@ -3,16 +3,16 @@ import { MonthDate } from '../monthdate/monthDate.js'
 import { DayOfWeek } from '../dayofweek/dayofweek.js'
 import { SystemDate } from '../systemdate/systemDate.js'
 import { EventDate } from '../eventdate/eventdate.js'
+import { ButtonCalendar } from '../buttoncalendar/buttonCalendar.js'
 import { PubSub } from '../../services/pubSub.js'
 import { PUB_SUB_INSTANCE } from '../../services/config.js'
 import css from './calendar.css' assert { type: 'css' };
-
 
 class Calendar extends HTMLElement {
     constructor() {
         super();
         this._pubSub = new PubSub();
-        this.addEventListener("getpubsub", this._handlerPubSub);
+        this.addEventListener(PUB_SUB_INSTANCE.INSTANCE, this._handlerPubSub);
         this._create();
     }
     _create() {
@@ -21,11 +21,15 @@ class Calendar extends HTMLElement {
             Clock.getComponentName(),
             SystemDate.getComponentName(),
             MonthDate.getComponentName(),
+            ButtonCalendar.getComponentName(),
             DayOfWeek.getComponentName(),
             EventDate.getComponentName()];
         components.forEach(component => {
             shadow.appendChild(document.createElement(component));
         })
+        document.addEventListener(PUB_SUB_INSTANCE.INSTANCE, (event) => {
+            event.detail && (event.detail.pubSubInstance = this._pubSub);
+        });
         this._setStyle(shadow);
     }
     _handlerPubSub(event) {
