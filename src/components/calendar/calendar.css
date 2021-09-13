@@ -2,4 +2,7 @@
     display: grid;
     background-color: var(--background-color);
     color: var(--color);
+    /* display: block; */
+    cursor: default;
+    width: 22em;
 }
