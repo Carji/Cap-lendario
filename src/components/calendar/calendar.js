@@ -4,30 +4,38 @@ import { MonthDate } from '../monthdate/monthDate.js'
 import { DayOfWeek } from '../dayofweek/dayofweek.js'
 import { GridCalendar } from '../gridcalendar/gridCalendar.js'
 import { EventDate } from '../eventdate/eventdate.js'
+import { ButtonCalendar } from '../buttoncalendar/buttonCalendar.js'
 import { PubSub } from '../../services/pubSub.js'
 import { PUB_SUB_INSTANCE } from '../../services/config.js'
 import css from './calendar.css' assert { type: 'css' };
 
-
 class Calendar extends HTMLElement {
+
+
     constructor() {
         super();
         this._pubSub = new PubSub();
         this.addEventListener(PUB_SUB_INSTANCE.INSTANCE, this._handlerPubSub);
         this._create();
     }
+
     _create() {
         const shadow = this.attachShadow({ mode: "open" });
         const components = [
             Clock.getComponentName(),
             SystemDate.getComponentName(),
             MonthDate.getComponentName(),
+            ButtonCalendar.getComponentName(),
+            ButtonCalendar.getComponentName(),
             DayOfWeek.getComponentName(),
             GridCalendar.getComponentName(),
             EventDate.getComponentName()];
         components.forEach(component => {
             shadow.appendChild(document.createElement(component));
         })
+        const buttons = this.shadowRoot.querySelectorAll("cap-button-calendar");
+        buttons[0].setAttributeNS("action","action","down")
+        buttons[1].setAttribute("action", "up");
         this._setStyle(shadow);
     }
     _handlerPubSub(event) {
