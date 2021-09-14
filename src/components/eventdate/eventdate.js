@@ -1,11 +1,11 @@
 import { FormatService } from "../../services/formatService.js"
 import { ComponentDateBase } from "../core/componentDateBase.js"
-import { CHANNELS } from "../../services/config.js"
+import { Mixin, MixinInstance } from "../core/mixin.js";
 
-export class EventDate extends ComponentDateBase {
+export class EventDate extends Mixin(ComponentDateBase, MixinInstance) {
 
     connectedCallback() {
-       
+        this.dispatchInstance();
     }
 
     _changeDate() {
