@@ -13,7 +13,7 @@ class Calendar extends HTMLElement {
     constructor() {
         super();
         this._pubSub = new PubSub();
-        this.addEventListener("getpubsub", this._handlerPubSub);
+        this.addEventListener(PUB_SUB_INSTANCE.INSTANCE, this._handlerPubSub);
         this._create();
     }
     _create() {

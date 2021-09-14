@@ -10,6 +10,10 @@ const MixinGlobal = Base => class extends Base {
         });
         this.dispatchEvent(event);
     }
+    set pubSubGlobal(value) {
+        this._pubSubGlobal = value;
+        this._suscribe(value);
+    }
 };
 
 const MixinInstance = Base => class extends Base {
@@ -21,6 +25,10 @@ const MixinInstance = Base => class extends Base {
             cancelable: true,
         });
         this.dispatchEvent(event);
+    }
+    set pubSubInstance(value) {
+        this._pubSubInstance = value;
+        this._suscribe(value);
     }
 }
 

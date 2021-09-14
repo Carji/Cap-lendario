@@ -11,7 +11,7 @@ import { PUB_SUB_INSTANCE } from './services/config.js'
         pubSub.dispose();
     });
     document.addEventListener(PUB_SUB_INSTANCE.GLOBAL, (event) => {
-        event.detail && (event.detail.pubSubInstance = pubSub);
+        event.detail && (event.detail.pubSubGlobal = pubSub);
     });
     customElements.whenDefined("cap-calendar").then(() => {
         timerService.init();
