@@ -15,20 +15,19 @@ export class DateService {
         }
         return calendar;
     }
-
     static getNextOrPreviousMonth(date, diff) {
-        date.setMonth(date.getMonth() + diff);
-        return DateService.getDaysOfMonth(date);
+        let newDate = new Date(date);
+        newDate.setMonth(date.getMonth() + diff);
+        return newDate;
     }
     static isToday(date, newDate) {
         return (date.getDate() === newDate.getDate()
             && date.getMonth() === newDate.getMonth()
             && date.getFullYear() === newDate.getFullYear())
     }
-
     static isThisMonth(date, newDate) {
         return date.getMonth() === newDate.getMonth() &&
-        date.getFullYear() === newDate.getFullYear();
+            date.getFullYear() === newDate.getFullYear();
     }
 
 }

@@ -11,14 +11,12 @@ import css from './calendar.css' assert { type: 'css' };
 
 class Calendar extends HTMLElement {
 
-
     constructor() {
         super();
         this._pubSub = new PubSub();
         this.addEventListener(PUB_SUB_INSTANCE.INSTANCE, this._handlerPubSub);
         this._create();
     }
-
     _create() {
         const shadow = this.attachShadow({ mode: "open" });
         const components = [
@@ -34,7 +32,7 @@ class Calendar extends HTMLElement {
             shadow.appendChild(document.createElement(component));
         })
         const buttons = this.shadowRoot.querySelectorAll("cap-button-calendar");
-        buttons[0].setAttributeNS("action", "action", "down")
+        buttons[0].setAttribute("action", "down")
         buttons[1].setAttribute("action", "up");
         this._setStyle(shadow);
     }
@@ -42,7 +40,6 @@ class Calendar extends HTMLElement {
         event.stopPropagation();
         event.detail && (event.detail.pubSubInstance = this._pubSub);
     }
-
     disconnectedCallback() {
         this.removeEventListener(PUB_SUB_INSTANCE.INSTANCE, this._handlerPubSub);
         this._pubSub.dispose();
@@ -50,6 +47,7 @@ class Calendar extends HTMLElement {
     _setStyle(shadow) {
         shadow.adoptedStyleSheets = [css];
     }
+
 }
 
 customElements.define("cap-calendar", Calendar)
