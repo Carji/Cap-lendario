@@ -34,7 +34,7 @@ class Calendar extends HTMLElement {
             shadow.appendChild(document.createElement(component));
         })
         const buttons = this.shadowRoot.querySelectorAll("cap-button-calendar");
-        buttons[0].setAttributeNS("action","action","down")
+        buttons[0].setAttributeNS("action", "action", "down")
         buttons[1].setAttribute("action", "up");
         this._setStyle(shadow);
     }

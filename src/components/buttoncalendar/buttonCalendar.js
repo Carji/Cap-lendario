@@ -13,7 +13,7 @@ export class ButtonCalendar extends HTMLElement{
         this._action = BUTTON.UP;
         this._shadow = this.attachShadow({mode: "open"});
         this._disposables = [];
-        // this._create();
+        this._create();
     }
     static get observedAttributes() {
         return ['action'];
@@ -72,7 +72,6 @@ export class ButtonCalendar extends HTMLElement{
             throw ACTION_IS_NULL;
         }
         this._action = action;
-         this._create();
     }
     static getComponentName() {
         return "cap-button-calendar";
