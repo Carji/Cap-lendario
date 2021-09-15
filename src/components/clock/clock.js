@@ -19,6 +19,7 @@ export class Clock extends Mixin(ComponentDateBase, MixinGlobal) {
             :host {
                 font-size: 3rem;
                 display: block;
+                font-weight: lighter;
                 }
         `;
         return style;

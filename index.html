@@ -9,15 +9,17 @@
     <style>
         :root {
             --color: white;
-            --background-color: black;
-            --system-date-color: blue;
-            --month-date-color: gray;
+            --background-color: rgb(65, 65, 65);
+            --system-date-color: rgb(98, 161, 233);
+            --grid-day-selected: rgb(8, 116, 240);
+            --month-date-color: rgb(179, 179, 179);
         }
 
         body {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 8px;
+            display: inline-grid;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            grid-template-columns: repeat(auto-fit,minmax(250px, 1fr));
+            gap:8px;
         }
     </style>
 </head>

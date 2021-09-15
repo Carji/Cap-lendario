@@ -10,9 +10,12 @@ export class DayOfWeek extends HTMLElement {
         const style = document.createElement("style");
         style.textContent = `
             :host {
+                z-index: 5;
                 display: grid;
-                grid-template-columns: repeat(7, auto);
-                }
+                grid-template-columns: repeat(7, 1fr);
+                text-align: center;
+                margin-bottom:7px;
+            }
         `;
         return style;
     }

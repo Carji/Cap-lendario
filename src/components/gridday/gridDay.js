@@ -15,14 +15,23 @@ export class GridDay extends HTMLElement {
     _getStyle() {
         const style = document.createElement("style");
         style.textContent = `
-            :host(.inactive) {
-                color: gray;
+            :host {
+                    width: 100%;
+                    height: 50px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: transparent;
+                    
+                }
+                :host(.inactive) {
+                    color: gray;
             }                      
             :host(.selected) {
-                color: green;
+                box-shadow: inset 0 0 0 3px var(--grid-day-selected);
             }
             :host(.today) {
-                color: blue;
+                background-color: var(--grid-day-selected);
             }
         `;
         return style;

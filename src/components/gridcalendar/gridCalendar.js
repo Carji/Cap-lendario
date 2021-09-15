@@ -56,17 +56,12 @@ export class GridCalendar extends Mixin(HTMLElement, MixinGlobal, MixinInstance)
         const style = document.createElement("style");
         style.textContent = `
             :host{
-                border-bottom: 0.05em solid var(--border-color);
-                color: var(--main-font-color);
-                background-color: var(--main-bg-color);
-                font-family: sans-serif;
-                display: inline-grid;
-                padding: 1em 0.7em;
-                gap: 0.8em 2em;
-                grid-template-columns: repeat(7,1em);
-                text-align: center;
-                cursor: default;
+                z-index: 5;
+                display: grid;
+                grid-template-columns: repeat(7, 1fr);
+                
                 }
+                
         `;
         return style;
     }
